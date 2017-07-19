@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">CSound-Android</string>
+    <string name="binding_widgets">Binding Widgets</string>
+    <string name="hello_csound">Hello Csound!</string>
+    <string name="start_csound">Start Csound</string>
+    <string name="stop_csound">Stop Csound</string>
+    <string name="play_instrument">PLAY INSTRUMENT (-p3)</string>
+    <string name="stop_instrument">STOP INSTRUMENT (+p3)</string>
+    <string name="buttonFromCsound">updateValuesFromCsound</string>
+    <string name="textviewHz">TextViewHz</string>
+    <string name="quarter_a4">quarter_a4</string>
+    <string name="startCsound">StartCsound</string>
+    <string name="stopCsound">StopCsound</string>
+    <string name="updatesValuesFromCsound">UpdatesValuesFromCsound</string>
+    <string name="change_frequency">change frequency</string>
+</resources>
