@@ -24,7 +24,7 @@ public class Example2 extends BaseCsoundActivity implements
     CsoundUI csoundUI = null;                                   //states CsoundUI and close evenctually a precedent CsoundUI object and states a CsoundUI object
     private CsoundObj csoundObj;                                //states csound
     Button startCsound, stopCsound, UpdateValueFromCsound;      //states Button
-    ImageView noteImage;                                        //states ImageView
+    ImageView noteImage, clefImage;                             //states ImageView
     TextView testValue;                                         //states TestView
     SeekBar volumeSlider;                                       //state slider
 
@@ -33,23 +33,22 @@ public class Example2 extends BaseCsoundActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_example2);
 
-
         csoundObj = new CsoundObj();                                    //create csound object
         csoundUI = new CsoundUI(csoundObj);                         //create binding object
         startCsound = (Button) findViewById(R.id.button6);              //connect java button a xml button widget
         stopCsound = (Button) findViewById(R.id.button7);               //connect java button a xml button widget
         UpdateValueFromCsound = (Button) findViewById(R.id.button);     //connect java button a xml button widget
         volumeSlider = (SeekBar) findViewById(R.id.seekBar);     //connect java seekbar to xml seekbar widget
+        clefImage = (ImageView) findViewById(R.id.imageView2); //connect un widget xml a un oggetto java
+        clefImage.setImageResource(R.drawable.ch_40x80); //show clef image
         noteImage = (ImageView) findViewById(R.id.imageView); //connect un widget xml a un oggetto java
-        noteImage.setImageResource(R.drawable.f4_40x80); //fa comparire l'immagine
+        noteImage.setImageResource(R.drawable.f4_40x80); //show image
         testValue = (TextView) findViewById(R.id.textView2);
 
 
         CsoundUI ui = new CsoundUI(csoundObj);
         ui.addButton(UpdateValueFromCsound, "button-channel-1", 1); //a cosa corrisponde il numero?? Ci deve stare un numero
         //"button-channel-1" is a name of channels in .csd file
-
-
 
         csoundObj.addBinding(new CsoundBinding() {
             CsoundObj csoundObj = null;
@@ -108,9 +107,6 @@ With respect to the channeltype number, here are the constants:
             }
         });
 
-
-
-
         startCsound.setOnClickListener(new View.OnClickListener() { //connect actions to start button
             @Override
             public void onClick(View v) {
@@ -120,8 +116,6 @@ With respect to the channeltype number, here are the constants:
                 csoundObj.startCsound((createTempFile(getResourceFileAsString(R.raw.test_02))));   //start Csound csd file
                 csoundUI.addSlider(volumeSlider, "volume", 0, 1);          //connect java seekbar to csound chnget
                 //"volume" is a name of channels in .csd file
-
-
 
             }
         });

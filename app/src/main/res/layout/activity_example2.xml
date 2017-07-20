@@ -37,7 +37,8 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button"
-        app:layout_constraintVertical_bias="0.489" />
+        app:layout_constraintVertical_bias="0.486"
+        app:layout_constraintHorizontal_bias="0.541" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -52,7 +53,8 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button"
-        app:srcCompat="@drawable/a4_40x80" />
+        app:srcCompat="@drawable/a4_40x80"
+        app:layout_constraintHorizontal_bias="0.576" />
 
     <Button
         android:id="@+id/button6"
@@ -101,6 +103,20 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="157dp"
+        android:layout_marginTop="8dp"
+        android:contentDescription="@string/violin_clef"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:srcCompat="@drawable/ch_40x80"
+        tools:ignore="ContentDescription,RtlHardcoded" />
 </android.support.constraint.ConstraintLayout>
 
 

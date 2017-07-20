@@ -13,4 +13,11 @@
     <string name="stopCsound">StopCsound</string>
     <string name="updatesValuesFromCsound">UpdatesValuesFromCsound</string>
     <string name="change_frequency">change frequency</string>
+    <string name="buttonGen01">ButtonGen01</string>
+    <string name="buttongen01">buttonGen01</string>
+    <string name="buttonSuonaGen01">ButtonSuonaGen01</string>
+    <string name="buttonCopyToCard">ButtonCopyToCard</string>
+    <string name="confirmtoexit">Are you sure you want to exit?</string>
+    <string name="startCsound2">StartCSound2</string>
+    <string name="violin_clef">violin_clef</string>
 </resources>
