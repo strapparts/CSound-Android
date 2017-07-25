@@ -59,16 +59,16 @@ public class Example3 extends BaseCsoundActivity  {
 */
 
 
-
+//TODO per Antonio: sostituire la procedura di copia su memoria esterna con copia su cache
     ////////////////////////////////////////////////////////
 //YOU MUST COPY GEN01 FILE WAV IN THE SOUND CARD, BECAUSE OF READING RESTRICTIONS
 //COPIARE I FILE CONTENUTI IN 'ASSETS' NELLA 'SDCARD', PER POTER UTILIZZARE LA FUNZIONE 'GEN01'
 // ALTRIMENTI INUTILIZZABILE A CAUSA DI RESTRIZIONI DI LETTURA
-    File csdPath = new File(Environment.getExternalStorageDirectory() + "/MyAppCsound/voices/test_03.csd"); //il .csd file che viene letto
     ///////////////////////////////////////////////////////
     /////////////////////////////////////////////////////// TO COPY FILES FROM 'ASSETS' FOLDER TO SDCARD
     //from: http://stackoverflow.com/questions/4447477/how-to-copy-files-from-assets-folder-to-sdcard
-    final static String TARGET_BASE_PATH = "/sdcard/MyAppCsound/voices/";
+    final static String TARGET_BASE_PATH = Environment.getExternalStorageDirectory() + "/MyAppCsound/voices/";
+    File csdPath = new File(TARGET_BASE_PATH + "test_03.csd"); //il .csd file che viene letto
 
     private void copyFilesToSdCard() {
         copyFileOrDir(""); // copy all files in assets folder in my project
@@ -186,6 +186,11 @@ public class Example3 extends BaseCsoundActivity  {
         suonaGen01 = (Button) findViewById(R.id.button10); //connect button to widget
         startCsoundAgain = (Button) findViewById(R.id.button12);
 
+        buttoncopyWavToCard.setEnabled(true);
+        startCsoundAgain.setEnabled(true);
+        suonaGen01.setEnabled(false);
+
+
         buttoncopyWavToCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -206,6 +211,10 @@ public class Example3 extends BaseCsoundActivity  {
             @Override
             public void onClick(View v) {
                 csoundObj.startCsound(csdPath);                             //start Csound .csd file
+
+                buttoncopyWavToCard.setEnabled(false);
+                startCsoundAgain.setEnabled(false);
+                suonaGen01.setEnabled(true);
             }
         });
 

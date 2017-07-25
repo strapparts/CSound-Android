@@ -42,7 +42,7 @@ public class Example1 extends BaseCsoundActivity {
             @Override
             public void onClick(View v) {
                 //write here your command for this button:
-                csoundObj.startCsound((createTempFile(getResourceFileAsString(R.raw.test_01))));   //start Csound csd file
+                csoundObj.startCsound(createTempFile(getResourceFileAsString(R.raw.test_01)));   //start Csound csd file
                 csoundUI.addSlider(volumeCsound, "volume", 0, 1);          //connect java seekbar to csound chnget
                 CsoundStart.setEnabled(false);
                 CsoundStop.setEnabled(true);

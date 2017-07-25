@@ -34,7 +34,6 @@ package com.strapparts.csound_android;
 
     @Override
     protected void onDestroy() {
-        // TODO Auto-generated method stub
         super.onDestroy();
         csoundObj.stop();
 
@@ -75,7 +74,6 @@ package com.strapparts.csound_android;
             fos.write(csd.getBytes());
             fos.close();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 

@@ -47,6 +47,8 @@ public class Example2 extends BaseCsoundActivity implements
 
 
         CsoundUI ui = new CsoundUI(csoundObj);
+
+        //TODO per Andrea: impostare il bottone a 0 e inserire un trigger su csound
         ui.addButton(UpdateValueFromCsound, "button-channel-1", 1); //a cosa corrisponde il numero?? Ci deve stare un numero
         //"button-channel-1" is a name of channels in .csd file
 
@@ -58,11 +60,9 @@ public class Example2 extends BaseCsoundActivity implements
             }
 
             public void updateValuesToCsound() {
-                // TODO Auto-generated method stub
             }
 
             public void updateValuesFromCsound() {
-                // TODO Auto-generated method stub
                 //Csound csound = csoundObj.getCsound();
                 //float imageValue =  csoundObj.getCsound().GetChannel("setImage");
                 //Log.d("CsoundAndroidActivity", "ValueCacheable From called");
@@ -131,12 +131,15 @@ With respect to the channeltype number, here are the constants:
 
     public void csoundObjStarted(CsoundObj csoundObj) {}            //needs "implements CsoundObjListener"
 
+
     public void csoundObjCompleted(CsoundObj csoundObj) {            //needs "implements CsoundObjListener"
+        /*
         handler.post(new Runnable() {
             public void run() {
                 //startCsound.setChecked(false);
             }
         });
+        */
     }
 
 }
