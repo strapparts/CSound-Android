@@ -16,26 +16,44 @@ chnset 0, "setImage" ;INIZIALIZZAZIONE NECESSARIA PER FAR CAMBIARE I VALORI DEL 
 instr 1
 kfrq = 440
 kchx = 99
+
 ktrig chnget "button-channel-1"
 kvol chnget "volume"
 kvol portk kvol, .1, i(kvol)
 ;ktrig chnget "newitem"
 
-if ktrig == 1 then
-;if ktrig > 0 then
-kchx = 999
-kfrq = 440 / 1.25 ;a thirth major down
-endif
+;ktrig1 trigger ktrig, .5, 1
+;ktrig0 trigger ktrig, .5, 0
 
-chnset kchx, "setImage"
-printk .1, ktrig
-printk .1, kchx
-kfrq portk kfrq, .05, i(kfrq)
+ktrigSwitch changed ktrig ;emette '1' ogni volta che 'ktrig' cambia stato (da '0' a '1' o voceversa)
+ckgoto ktrigSwitch == 1, changeIt ; va a 'changeIt' ogni volta che ktrig emette '1'
+kgoto jump ;vai a jump (salta la reinizializzazione, se non si verifica la condizione della riga precedente)
+reset:
+ichx = (i(ktrig) == 1 ? 999 : 99) ;se 'ktrig' = 1 allora 'ichx' = 999, altrimenti 99
+ifrq = (i(ktrig) == 1 ? 440/1.25 : 440) ;se 'ktrig' = 1 allora 'ifrq' = 660, altrimenti 440
+chnset ichx, "setImage"
+rireturn ;termina il passo di reinizializzazione
+changeIt:
+reinit reset ;reinizializza a partire da 'reset'
+jump:
+
+
+;if ktrig == 1 then
+
+;kchx = 999
+;kfrq = 660 ;440 / 1.25 ;a thirth major down
+;endif
+
+
+;chnset kchx, "setImage"
+;printk .1, ktrig
+;printk .1, kchx
+kfrq portk ifrq, .05, ifrq
 kenv linseg 0, .1, .5, p3-.2, .5, .1, 0
 asig poscil kenv*kvol, kfrq
 out asig
 endin
-
+;ktrig invalue "button-channel-1"
 instr 2
 iamp = .5
 icoda = .1
