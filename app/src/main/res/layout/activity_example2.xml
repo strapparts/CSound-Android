@@ -16,11 +16,11 @@
         android:layout_marginTop="8dp"
         android:text="@string/change_frequency"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintHorizontal_bias="0.246"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.416"
+        app:layout_constraintVertical_bias="0.434"
         tools:ignore="MissingConstraints" />
 
     <TextView
@@ -37,24 +37,25 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button"
-        app:layout_constraintVertical_bias="0.486"
-        app:layout_constraintHorizontal_bias="0.541" />
+        app:layout_constraintVertical_bias="0.564"
+        app:layout_constraintHorizontal_bias="0.191" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
         android:contentDescription="@string/quarter_a4"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
         app:srcCompat="@drawable/a4_40x80"
-        app:layout_constraintHorizontal_bias="0.576" />
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintHorizontal_bias="0.408"
+        app:layout_constraintVertical_bias="0.109" />
 
     <Button
         android:id="@+id/button6"
@@ -103,21 +104,85 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.8" />
+        app:layout_constraintVertical_bias="0.748"
+        app:layout_constraintHorizontal_bias="0.503" />
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginLeft="157dp"
+        android:layout_marginLeft="102dp"
         android:layout_marginTop="8dp"
         android:contentDescription="@string/violin_clef"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button"
         app:srcCompat="@drawable/ch_40x80"
-        tools:ignore="ContentDescription,RtlHardcoded" />
+        tools:ignore="ContentDescription,RtlHardcoded"
+        app:layout_constraintVertical_bias="0.109"
+        android:layout_marginRight="8dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintRight_toLeftOf="@+id/imageView"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <Button
+        android:id="@+id/button13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/buttonPush"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintVertical_bias="0.434"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintHorizontal_bias="0.832" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="26dp"
+        android:contentDescription="@string/violin_clef2"
+        app:layout_constraintHorizontal_bias="0.692"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button13"
+        app:srcCompat="@drawable/ch_40x80" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/c5image"
+        app:srcCompat="@drawable/c5_40x80"
+        tools:ignore="RtlHardcoded"
+        android:layout_marginRight="69dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="26dp"
+        app:layout_constraintTop_toBottomOf="@+id/button13" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="119dp"
+        android:text="@string/textviewhz"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.912"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button13"
+        app:layout_constraintVertical_bias="0.104" />
 </android.support.constraint.ConstraintLayout>
 
 
