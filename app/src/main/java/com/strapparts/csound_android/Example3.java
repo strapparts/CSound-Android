@@ -27,53 +27,73 @@ public class Example3 extends BaseCsoundActivity  {
     private CsoundObj csoundObj;                            //state a CsoundObj
     CsoundUI csoundUI = null;                               //states CsoundUI and close evenctually a precedent CsoundUI object and states a CsoundUI object
 
-    Button buttoncopyWavToCard, startCsoundAgain, suonaGen01; //state button
+    Button startCsoundAgain, suonaGen01; //state button
 
-/*
-///////////////////////////////// METODO PER VERIFICARE LA COPIA DEI FILE NELLA CARTELLA ASSETS NELLA CARTELLA DELLA SDCARD
-//da: https://stackoverflow.com/questions/3592836/check-for-file-existence-in-androids-assets-folder/7337516
-    //Context context = getApplicationContext();
-    //Context AppContext = getApplicationContext();  //getApplicationContext(), getContext(), getBaseContext()
 
-    private boolean isAssetExists(String pathInAssetsDir){
-        //AssetManager assetManager = context.getResources().getAssets();
-        AssetManager assetManager = AppContext.get().getResources().getAssets();
-        InputStream inputStream = null;
-        try {
-            inputStream = assetManager.open(pathInAssetsDir);
-            if(null != inputStream ) {
-                return true;
-            }
-        }  catch(IOException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                inputStream.close();
-            } catch (IOException e) {
-                e.printStackTrace();
+    private void copyFilesToInternalStorage(){
+        //copyFileOrDir(""); // utilizzata procedura di copia modificata a partire da quella che copia nella memoria esterna
+
+        ///// PICCOLA PROCEDURA CHE ELENCA I FILE CONTENUTI NELLA MEMORIA INTERNA, UTILIZZATA PER IL DEBUG LA LASCIO IN CASO SERVA
+        /*
+        if (getFilesDir().list().length==0){
+            Log.i("tag", "memoria interna vuota");
+        } else {
+            for (String filename : getFilesDir().list()) {
+                Log.i("tag", filename);
             }
         }
-        return false;
+        */
+
+
+        //////////////////////////////////////////////////////////////////////////
+        //PROCEDURA DI COPIA DEI FILE FATTA DA ANTONIO, FUNZIONANTE
+
+        Log.i("debug","inizio procedura");
+        String path = getFilesDir() + getString(R.string.relative_path);           //variabile con il percorso nel cui copiare i file, getFilesDir() è il percorso della memoria interna dell'app
+        Log.i("debug","path="+path);
+        File dir=new File(path);                            //istanziamento del percorso come oggetto in modo da poter usare il metodo exists()
+        try {
+            if (!dir.exists()) {                                 //controllo esistenza directory: se non esiste procedo alla copia dei file
+                Log.i("tag", "creazione cartella avviata");
+                if (!dir.mkdirs()) {                               //creazione cartella "voices"
+                    Log.i("tag", "creazione cartella non riuscita");
+                } else {
+                    //procedura di copia di tutti gli asset nella directory interna
+                    AssetManager assetManager = this.getAssets();            //inizializzazione asset manager
+                    String[] assets = {"a4_pianoforte.wav", "c5_pianoforte.wav", "f4_pianoforte.wav", "g4_pianoforte.wav", "test_03.csd"};  //definizione array che contiene i nomi dei file da copiare
+                    InputStream in;                              //definizioni input e output stream per la copia dei file
+                    OutputStream out;
+
+                    for (String filename:assets) {                   //ciclo for per scorrere l'elenco
+                        Log.i("tag", "copyFile() " + filename + " to " + path + filename);
+                        in = assetManager.open(filename);                   //caricamento nell'inputstream del file dagli assets
+                        out = new FileOutputStream(path+filename);        //creazione di un outputstream per il file da creare nella memoria interna
+                        byte[] buffer = new byte[1024];                     //procedura di copia byte per byte del file
+                        int read;
+                        while ((read = in.read(buffer)) != -1) {
+                            out.write(buffer, 0, read);
+                        }
+                        in.close();                                         //pulizia e azzeramento degli stream
+                        out.flush();
+                        out.close();
+                    }
+                }
+            }
+            else{
+                Log.i("debug","cartella già esistente, chiusura procedura");
+            }
+        }
+        catch (IOException e) {
+            Log.e("tag", "I/O Exception", e);
+        }
+
+        //FINE PROCEDURA COPIA ANTONIO
+        ////////////////////////////////////////////
     }
-/////////////////////////////////
-*/
 
-
-//TODO per Antonio: sostituire la procedura di copia su memoria esterna con copia su cache
-    ////////////////////////////////////////////////////////
-//YOU MUST COPY GEN01 FILE WAV IN THE SOUND CARD, BECAUSE OF READING RESTRICTIONS
-//COPIARE I FILE CONTENUTI IN 'ASSETS' NELLA 'SDCARD', PER POTER UTILIZZARE LA FUNZIONE 'GEN01'
-// ALTRIMENTI INUTILIZZABILE A CAUSA DI RESTRIZIONI DI LETTURA
-    ///////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////// TO COPY FILES FROM 'ASSETS' FOLDER TO SDCARD
-    //from: http://stackoverflow.com/questions/4447477/how-to-copy-files-from-assets-folder-to-sdcard
-    final static String TARGET_BASE_PATH = Environment.getExternalStorageDirectory() + "/MyAppCsound/voices/";
-    File csdPath = new File(TARGET_BASE_PATH + "test_03.csd"); //il .csd file che viene letto
-
-    private void copyFilesToSdCard() {
-        copyFileOrDir(""); // copy all files in assets folder in my project
-    }
-
+    //////////////////////////////////////////////
+    // PROCEDURA COPIA FILE NELLA MEMORIA INTERNA DELL'APP ADATTATA DA QUELLA CHE COPIAVA NELLA MEMORIA ESTERNA, LA LASCIO DI RISERVA
+    /*
     private void copyFileOrDir(String path) {
         AssetManager assetManager = this.getAssets();
         String assets[] = null;
@@ -83,7 +103,7 @@ public class Example3 extends BaseCsoundActivity  {
             if (assets.length == 0) {
                 copyFile(path);
             } else {
-                String fullPath =  TARGET_BASE_PATH + path;
+                String fullPath =  getFilesDir() + "/voices/" + path;
                 Log.i("tag", "path="+fullPath);
                 File dir = new File(fullPath);
                 if (!dir.exists() && !path.startsWith("images") && !path.startsWith("sounds") && !path.startsWith("webkit"))
@@ -108,16 +128,16 @@ public class Example3 extends BaseCsoundActivity  {
     private void copyFile(String filename) {
         AssetManager assetManager = this.getAssets();
 
-        InputStream in = null;
-        OutputStream out = null;
+        InputStream in;
+        OutputStream out;
         String newFileName = null;
         try {
             Log.i("tag", "copyFile() "+filename);
             in = assetManager.open(filename);
             if (filename.endsWith(".jpg")) // extension was added to avoid compression on APK file
-                newFileName = TARGET_BASE_PATH + filename.substring(0, filename.length()-4);
+                newFileName = getFilesDir() + "/voices/" + filename.substring(0, filename.length()-4);
             else
-                newFileName = TARGET_BASE_PATH + filename;
+                newFileName = getFilesDir() + "/voices/" + filename;
             out = new FileOutputStream(newFileName);
 
             byte[] buffer = new byte[1024];
@@ -136,15 +156,16 @@ public class Example3 extends BaseCsoundActivity  {
         }
 
     }
-/////////////////////////////////////////////
-/////////////////////////////////////////////
+    */
+    // FINE PROCEDURA DI COPIA
+    /////////////////////////////////////////////
 
 
 
     ///////////////////////
     ///////////////////////
     //RICHIESTA DI CONFERMA DI USCITA con metodo onBackPressed() E STOP CSOUND
-//da: http://stackoverflow.com/questions/2257963/how-to-show-a-dialog-to-confirm-that-the-user-wishes-to-exit-an-android-activity
+    //da: http://stackoverflow.com/questions/2257963/how-to-show-a-dialog-to-confirm-that-the-user-wishes-to-exit-an-android-activity
     @Override
     public void onBackPressed() {
         new AlertDialog.Builder(this)
@@ -179,40 +200,28 @@ public class Example3 extends BaseCsoundActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_example3);
 
-        csoundObj = new CsoundObj();                                //create csound object
-        csoundUI = new CsoundUI(csoundObj);                         //create binding object
+        csoundObj = new CsoundObj();                                    //create csound object
+        csoundUI = new CsoundUI(csoundObj);                             //create binding object
 
-        buttoncopyWavToCard = (Button) findViewById(R.id.button11); //connect button to widget
-        suonaGen01 = (Button) findViewById(R.id.button10); //connect button to widget
         startCsoundAgain = (Button) findViewById(R.id.button12);
+        suonaGen01 = (Button) findViewById(R.id.button10);              //connect button to widget
 
-        buttoncopyWavToCard.setEnabled(true);
-        startCsoundAgain.setEnabled(true);
+        startCsoundAgain.setEnabled(false);                             //bottoni disattivati
+        suonaGen01.setEnabled(false);
+
+        copyFilesToInternalStorage();                                   //avvia procedura copia
+
+        startCsoundAgain.setEnabled(true);                              //completata la procedura di copia viene attivato il bottone start csound
         suonaGen01.setEnabled(false);
 
 
-        buttoncopyWavToCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-/*              //TENTATIVO NON RIUSCITO
-                if (isAssetExists("/sdcard/MyAppCsound/voices/") == true)           //String TARGET_BASE_PATH = "/sdcard/MyAppCsound/voices/"
-                    buttoncopyWavToCard.setEnabled(false);
-                    else
-                    buttoncopyWavToCard.setEnabled(true);
-*/
-                //copyWavOnCard.getClass();                                       //dopo cruento corpo a corpo con Android **********************************
-                copyFilesToSdCard();                              //sembra che il metodo viene richiamato dalla classe 'CopyToSDCard' ***************************
-                                                                                //copy 'assets' content to "/sdcard/MyAppCsound/voices/"
-                //csoundObj.startCsound(csdPath);                             //start Csound .csd file
-            }
-        });
 
         startCsoundAgain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                csoundObj.startCsound(csdPath);                             //start Csound .csd file
 
-                buttoncopyWavToCard.setEnabled(false);
+                csoundObj.startCsound(new File(getFilesDir() + getString(R.string.relative_path) + "test_03.csd"));  //inserito percorso memoria interna per il file csd
+
                 startCsoundAgain.setEnabled(false);
                 suonaGen01.setEnabled(true);
             }
@@ -222,8 +231,8 @@ public class Example3 extends BaseCsoundActivity  {
             @Override
             public void onClick(View v) {
 
-                String event = String.format("i1 0 .7");                     //prepare event for .csd score
-                csoundObj.sendScore(event);                                 //sends event to .csd score
+                String event = "i1 0 .7";                     //prepare event for .csd score
+                csoundObj.sendScore(event);                                  //sends event to .csd score
 
             }
         });
