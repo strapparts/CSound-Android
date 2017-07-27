@@ -27,28 +27,30 @@ public class Example3 extends BaseCsoundActivity  {
     private CsoundObj csoundObj;                            //state a CsoundObj
     CsoundUI csoundUI = null;                               //states CsoundUI and close evenctually a precedent CsoundUI object and states a CsoundUI object
 
-    Button buttoncopyWavToCard, startCsoundAgain, suonaGen01; //state button
+    Button startCsoundAgain, suonaGen01; //state button
 
-
-//TODO per Antonio: sistemare la procedura di copia nella memoria interna, nel frattempo utilizziamo quella adattata dalla vecchia procedura di copia nella memoria di massa
 
     private void copyFilesToInternalStorage(){
-        copyFileOrDir(""); // utilizzata procedura di copia modificata a partire da quella che copia nella memoria esterna
+        //copyFileOrDir(""); // utilizzata procedura di copia modificata a partire da quella che copia nella memoria esterna
 
-        /*AssetManager assetManager = this.getAssets();             //procedura di prova per verifica assets
-        try {
-            String[] assets=assetManager.list("");
-            for (int i=0; i<assets.length; ++i){
-                Log.i("assets", assets[i]);
+        ///// PICCOLA PROCEDURA CHE ELENCA I FILE CONTENUTI NELLA MEMORIA INTERNA, UTILIZZATA PER IL DEBUG LA LASCIO IN CASO SERVA
+        /*
+        if (getFilesDir().list().length==0){
+            Log.i("tag", "memoria interna vuota");
+        } else {
+            for (String filename : getFilesDir().list()) {
+                Log.i("tag", filename);
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
+        }
+        */
+
 
         //////////////////////////////////////////////////////////////////////////
-        //PROCEDURA DI COPIA DEI FILE FATTA DA ANTONIO, NON (ANCORA) FUNZIONANTE
-        /*
-        String path = getFilesDir() + "/voices/";           //variabile con il percorso nel cui copiare i file, getFilesDir() è il percorso della memoria interna dell'app
+        //PROCEDURA DI COPIA DEI FILE FATTA DA ANTONIO, FUNZIONANTE
+
+        Log.i("debug","inizio procedura");
+        String path = getFilesDir() + getString(R.string.relative_path);           //variabile con il percorso nel cui copiare i file, getFilesDir() è il percorso della memoria interna dell'app
+        Log.i("debug","path="+path);
         File dir=new File(path);                            //istanziamento del percorso come oggetto in modo da poter usare il metodo exists()
         try {
             if (!dir.exists()) {                                 //controllo esistenza directory: se non esiste procedo alla copia dei file
@@ -65,7 +67,7 @@ public class Example3 extends BaseCsoundActivity  {
                     for (String filename:assets) {                   //ciclo for per scorrere l'elenco
                         Log.i("tag", "copyFile() " + filename + " to " + path + filename);
                         in = assetManager.open(filename);                   //caricamento nell'inputstream del file dagli assets
-                        out = new FileOutputStream(path + filename);        //creazione di un outputstream per il file da creare nella memoria interna
+                        out = new FileOutputStream(path+filename);        //creazione di un outputstream per il file da creare nella memoria interna
                         byte[] buffer = new byte[1024];                     //procedura di copia byte per byte del file
                         int read;
                         while ((read = in.read(buffer)) != -1) {
@@ -80,17 +82,21 @@ public class Example3 extends BaseCsoundActivity  {
                     }
                 }
             }
+            else{
+                Log.i("debug","cartella già esistente, chiusura procedura");
+            }
         }
         catch (IOException e) {
             Log.e("tag", "I/O Exception", e);
         }
 
-*/      //////////////////////////////////////////
+        //FINE PROCEDURA COPIA ANTONIO
+        ////////////////////////////////////////////
     }
 
     //////////////////////////////////////////////
-    // PROCEDURA COPIA FILE NELLA MEMORIA INTERNA DELL'APP ADATTATA DA QUELLA CHE COPIAVA NELLA MEMORIA ESTERNA, PER ADESSO UTILIZZIAMO QUESTA CHE VA BENE
-
+    // PROCEDURA COPIA FILE NELLA MEMORIA INTERNA DELL'APP ADATTATA DA QUELLA CHE COPIAVA NELLA MEMORIA ESTERNA, LA LASCIO DI RISERVA
+    /*
     private void copyFileOrDir(String path) {
         AssetManager assetManager = this.getAssets();
         String assets[] = null;
@@ -153,6 +159,7 @@ public class Example3 extends BaseCsoundActivity  {
         }
 
     }
+    */
     // FINE PROCEDURA DI COPIA
     /////////////////////////////////////////////
 
@@ -196,34 +203,28 @@ public class Example3 extends BaseCsoundActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_example3);
 
-        csoundObj = new CsoundObj();                                //create csound object
-        csoundUI = new CsoundUI(csoundObj);                         //create binding object
+        csoundObj = new CsoundObj();                                    //create csound object
+        csoundUI = new CsoundUI(csoundObj);                             //create binding object
 
-        buttoncopyWavToCard = (Button) findViewById(R.id.button11); //connect button to widget
-        suonaGen01 = (Button) findViewById(R.id.button10); //connect button to widget
         startCsoundAgain = (Button) findViewById(R.id.button12);
+        suonaGen01 = (Button) findViewById(R.id.button10);              //connect button to widget
 
-        buttoncopyWavToCard.setEnabled(true);
-        startCsoundAgain.setEnabled(true);
+        startCsoundAgain.setEnabled(false);                             //bottoni disattivati
+        suonaGen01.setEnabled(false);
+
+        copyFilesToInternalStorage();                                   //avvia procedura copia
+
+        startCsoundAgain.setEnabled(true);                              //completata la procedura di copia viene attivato il bottone start csound
         suonaGen01.setEnabled(false);
 
 
-        buttoncopyWavToCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                copyFilesToInternalStorage();                              //avvia procedura copia
-
-            }
-        });
 
         startCsoundAgain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                csoundObj.startCsound(new File(getFilesDir() + "/voices/test_03.csd"));  //inserito percorso memoria interna per il file csd
+                csoundObj.startCsound(new File(getFilesDir() + getString(R.string.relative_path) + "test_03.csd"));  //inserito percorso memoria interna per il file csd
 
-                buttoncopyWavToCard.setEnabled(false);
                 startCsoundAgain.setEnabled(false);
                 suonaGen01.setEnabled(true);
             }
