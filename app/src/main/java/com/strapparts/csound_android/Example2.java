@@ -88,8 +88,6 @@ public class Example2 extends BaseCsoundActivity implements
                     {
                         if (csoundObj.getOutputChannelPtr("setImage", controlChannelType.CSOUND_CONTROL_CHANNEL).GetValue(0) == 99)
                             //"setImage" is a name of channels in .csd file
-
-
                         {
                             noteImage1.setImageResource(R.drawable.a4_40x80);
                             testValue1.setText("a4");
