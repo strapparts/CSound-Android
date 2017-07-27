@@ -74,11 +74,8 @@ public class Example3 extends BaseCsoundActivity  {
                             out.write(buffer, 0, read);
                         }
                         in.close();                                         //pulizia e azzeramento degli stream
-                        in = null;
                         out.flush();
                         out.close();
-                        out = null;
-
                     }
                 }
             }
@@ -234,7 +231,7 @@ public class Example3 extends BaseCsoundActivity  {
             @Override
             public void onClick(View v) {
 
-                String event = String.format("i1 0 .7");                     //prepare event for .csd score
+                String event = "i1 0 .7";                     //prepare event for .csd score
                 csoundObj.sendScore(event);                                  //sends event to .csd score
 
             }
