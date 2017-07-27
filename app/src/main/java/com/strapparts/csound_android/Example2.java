@@ -112,11 +112,8 @@ public class Example2 extends BaseCsoundActivity implements
                             testValue2.setText("g4");
                             Log.d("CsoundAndroidActivity", "g4");
                         }
-
                     }
                 });
-
-
             }
 
 
