@@ -102,6 +102,19 @@ public class Example2 extends BaseCsoundActivity implements
                             Log.d("CsoundAndroidActivity", "f4");
                         }
 
+                        if (csoundObj.getOutputChannelPtr("setImage2", controlChannelType.CSOUND_CONTROL_CHANNEL).GetValue(0) == 99)
+                        {
+                            noteImage2.setImageResource(R.drawable.c5_40x80);
+                            testValue2.setText("c5");
+                            Log.d("CsoundAndroidActivity", "c5");
+                        }
+                        else
+                        {
+                            noteImage2.setImageResource(R.drawable.g4_40x80);
+                            testValue2.setText("g4");
+                            Log.d("CsoundAndroidActivity", "g4");
+                        }
+
                     }
                 });
 
