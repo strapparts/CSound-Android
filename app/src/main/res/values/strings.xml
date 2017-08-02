@@ -12,5 +12,17 @@
     <string name="startCsound">StartCsound</string>
     <string name="stopCsound">StopCsound</string>
     <string name="updatesValuesFromCsound">UpdatesValuesFromCsound</string>
-    <string name="change_frequency">change frequency</string>
+    <string name="change_frequency">push and lift</string>
+    <string name="buttonGen01">ButtonGen01</string>
+    <string name="buttongen01">buttonGen01</string>
+    <string name="buttonSuonaGen01">ButtonSuonaGen01</string>
+    <string name="confirmtoexit">Are you sure you want to exit?</string>
+    <string name="startCsound2">StartCSound2</string>
+    <string name="violin_clef">violin_clef</string>
+    <string name="relative_path">/csound/</string>
+    <string name="buttonPush">hold down</string>
+    <string name="violin_clef2">violin_clef2</string>
+    <string name="c5image">c5image</string>
+    <string name="textviewhz">TextViewHz</string>
+
 </resources>
