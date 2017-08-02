@@ -11,11 +11,6 @@ import android.widget.SeekBar;
 import com.csounds.CsoundObj;
 import com.csounds.bindings.ui.CsoundUI;
 
-/*
-public class Play1Activity extends BaseCsoundActivity implements
-        CsoundObjListener {
-*/
-
 public class Example1 extends BaseCsoundActivity {
 
     CsoundUI csoundUI = null;                               //states CsoundUI and close evenctually a precedent CsoundUI object and states a CsoundUI object
@@ -27,7 +22,6 @@ public class Example1 extends BaseCsoundActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_example1);     //connect to layout window ("activity_main.xml")
-
 
         csoundObj = new CsoundObj();                                //create csound object
         csoundUI = new CsoundUI(csoundObj);                         //create binding object
@@ -48,7 +42,7 @@ public class Example1 extends BaseCsoundActivity {
             @Override
             public void onClick(View v) {
                 //write here your command for this button:
-                csoundObj.startCsound((createTempFile(getResourceFileAsString(R.raw.test_01))));   //start Csound csd file
+                csoundObj.startCsound(createTempFile(getResourceFileAsString(R.raw.test_01)));   //start Csound csd file
                 csoundUI.addSlider(volumeCsound, "volume", 0, 1);          //connect java seekbar to csound chnget
                 CsoundStart.setEnabled(false);
                 CsoundStop.setEnabled(true);
@@ -99,9 +93,6 @@ public class Example1 extends BaseCsoundActivity {
                 StopInstr.setEnabled(false);
             }
         });
-
-
-
 
     }
 }
