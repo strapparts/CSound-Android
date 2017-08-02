@@ -24,5 +24,7 @@
     <string name="violin_clef2">violin_clef2</string>
     <string name="c5image">c5image</string>
     <string name="textviewhz">TextViewHz</string>
+    <string name="buttonMidiFile">ButtonMidiFile</string>
+    <string name="buttonPlayMidiFile">ButtonPlayMidiFile</string>
 
 </resources>
