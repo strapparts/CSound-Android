@@ -1,6 +1,8 @@
 package com.strapparts.csound_android;
 
+import android.content.DialogInterface;
 import android.content.res.AssetManager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -86,6 +88,36 @@ public class Example4 extends AppCompatActivity {
         ////////////////////////////////////////////
     }
 
+
+
+    ///////////////////////
+    ///////////////////////
+    //RICHIESTA DI CONFERMA DI USCITA con metodo onBackPressed() E STOP CSOUND
+    //da: http://stackoverflow.com/questions/2257963/how-to-show-a-dialog-to-confirm-that-the-user-wishes-to-exit-an-android-activity
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setMessage(getString(R.string.confirmtoexit))
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int id) {
+                        //VariabiliDiClasse.value3 = 0; //contatore risposte errate da azzerare nel caso di uscita
+                        //VariabiliDiClasse.count3 = 0;
+                        //VariabiliDiClasse.count4 = 0;
+                        //count4 = 0; //contatore risposte esatte da azzerare nel caso di uscita
+                        //value3 = 0;
+                        //permutTab = null;
+                        Example4.this.finish();
+                        csoundObj.stop(); //in caso di uscita Csound viene fermato, ma viene anche cancellato?
+
+                    }
+                })
+                .setNegativeButton("No", null)
+                .show();
+    }
+    ///////////////////////
+    ///////////////////////
 
 
 

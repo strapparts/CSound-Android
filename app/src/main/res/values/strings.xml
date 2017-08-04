@@ -26,5 +26,8 @@
     <string name="textviewhz">TextViewHz</string>
     <string name="buttonMidiFile">ButtonMidiFile</string>
     <string name="buttonPlayMidiFile">ButtonPlayMidiFile</string>
+    <string name="buttonMidiFile_b">ButtonMidiFile_b</string>
+    <string name="buttonMidiPlay_b">ButtonMidiPlay_b</string>
+    <string name="buttonMidiPause_b">ButtonMidiPause_b</string>
 
 </resources>

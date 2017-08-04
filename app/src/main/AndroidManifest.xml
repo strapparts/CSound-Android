@@ -30,7 +30,8 @@
         <activity android:name=".Example1" />
         <activity android:name=".Example2" />
         <activity android:name=".Example3" />
-        <activity android:name=".Example4"></activity>
+        <activity android:name=".Example4" />
+        <activity android:name=".Example4b"></activity>
     </application>
 
 </manifest>

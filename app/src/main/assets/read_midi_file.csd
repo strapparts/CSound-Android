@@ -13,7 +13,7 @@ nchnls = 1
 
 instr 1 ;electric piano
 ;midiprogramchange 74
-iGain = .1
+iGain = .4
 iAmp veloc
 iAmp = iAmp/127 ;convert velocity to 0dbfs
 iNum notnum
@@ -22,7 +22,7 @@ iCps = cpsmidinn(iNum) ;notenum -> cps conversion
 ;iCps  = (440.0*exp(log(2.0)*((iNum)-69.0)/12.0)) ;notenum -> cps conversion
 kEnv	madsr	.05, .1, iAmp, .2
 
-kv1	madsr	.05, .1, iAmp, .2			;(FM) Modulator Index One
+kv1	madsr	.05, .1, 200, .2			;(FM) Modulator Index One
 kv5	=	50					;ADSR 2 and 4 target
 ;asig   STKRhodey ifrq, iamp,     [kmod, kv1[, kcross, kv2[, klfo, kv3[, klfodepth, kv4[, kadsr, kv5]]]]]
 ;aSig	STKRhodey iCps, iAmp, 2,   kv1,  4,      10,   11,   100,  1,         3,    128,    kv5
@@ -35,7 +35,7 @@ endin
 instr 2 ;flute
 iVel veloc
 iAmp = iVel/127
-iGain = .2
+iGain = .4
 iNot notnum
 iCps = cpsmidinn(iNot)
 kEnv madsr .5, .2, .6, .1
