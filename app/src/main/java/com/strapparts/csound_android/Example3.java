@@ -27,69 +27,8 @@ public class Example3 extends BaseCsoundActivity  {
     private CsoundObj csoundObj;                            //state a CsoundObj
     CsoundUI csoundUI = null;                               //states CsoundUI and close evenctually a precedent CsoundUI object and states a CsoundUI object
 
-    Button startCsoundAgain, suonaGen01; //state button
+    Button startCsoundAgain, suonaGen01, suonaGen01_b, suonaGen01_c, suonaGen01_d ; //state button
 
-
-    private void copyFilesToInternalStorage(){
-        //copyFileOrDir(""); // utilizzata procedura di copia modificata a partire da quella che copia nella memoria esterna
-
-        ///// PICCOLA PROCEDURA CHE ELENCA I FILE CONTENUTI NELLA MEMORIA INTERNA, UTILIZZATA PER IL DEBUG LA LASCIO IN CASO SERVA
-        /*
-        if (getFilesDir().list().length==0){
-            Log.i("tag", "memoria interna vuota");
-        } else {
-            for (String filename : getFilesDir().list()) {
-                Log.i("tag", filename);
-            }
-        }
-        */
-
-
-        //////////////////////////////////////////////////////////////////////////
-        //PROCEDURA DI COPIA DEI FILE FATTA DA ANTONIO, FUNZIONANTE
-
-        Log.i("debug","inizio procedura");
-        String path = getFilesDir() + getString(R.string.relative_path);           //variabile con il percorso nel cui copiare i file, getFilesDir() è il percorso della memoria interna dell'app
-        Log.i("debug","path="+path);
-        File dir=new File(path);                            //istanziamento del percorso come oggetto in modo da poter usare il metodo exists()
-        try {
-            if (!dir.exists()) {                                 //controllo esistenza directory: se non esiste procedo alla copia dei file
-                Log.i("tag", "creazione cartella avviata");
-                if (!dir.mkdirs()) {                               //creazione cartella "voices"
-                    Log.i("tag", "creazione cartella non riuscita");
-                } else {
-                    //procedura di copia di tutti gli asset nella directory interna
-                    AssetManager assetManager = this.getAssets();            //inizializzazione asset manager
-                    String[] assets = {"a4_pianoforte.wav", "c5_pianoforte.wav", "f4_pianoforte.wav", "g4_pianoforte.wav", "test_03.csd"};  //definizione array che contiene i nomi dei file da copiare
-                    InputStream in;                              //definizioni input e output stream per la copia dei file
-                    OutputStream out;
-
-                    for (String filename:assets) {                   //ciclo for per scorrere l'elenco
-                        Log.i("tag", "copyFile() " + filename + " to " + path + filename);
-                        in = assetManager.open(filename);                   //caricamento nell'inputstream del file dagli assets
-                        out = new FileOutputStream(path+filename);        //creazione di un outputstream per il file da creare nella memoria interna
-                        byte[] buffer = new byte[1024];                     //procedura di copia byte per byte del file
-                        int read;
-                        while ((read = in.read(buffer)) != -1) {
-                            out.write(buffer, 0, read);
-                        }
-                        in.close();                                         //pulizia e azzeramento degli stream
-                        out.flush();
-                        out.close();
-                    }
-                }
-            }
-            else{
-                Log.i("debug","cartella già esistente, chiusura procedura");
-            }
-        }
-        catch (IOException e) {
-            Log.e("tag", "I/O Exception", e);
-        }
-
-        //FINE PROCEDURA COPIA ANTONIO
-        ////////////////////////////////////////////
-    }
 
     //////////////////////////////////////////////
     // PROCEDURA COPIA FILE NELLA MEMORIA INTERNA DELL'APP ADATTATA DA QUELLA CHE COPIAVA NELLA MEMORIA ESTERNA, LA LASCIO DI RISERVA
@@ -205,14 +144,18 @@ public class Example3 extends BaseCsoundActivity  {
 
         startCsoundAgain = (Button) findViewById(R.id.button12);
         suonaGen01 = (Button) findViewById(R.id.button10);              //connect button to widget
+        suonaGen01_b = (Button) findViewById(R.id.button19);              //connect button to widget
+        suonaGen01_c = (Button) findViewById(R.id.button20);              //connect button to widget
+        suonaGen01_d = (Button) findViewById(R.id.button21);              //connect button to widget
 
-        startCsoundAgain.setEnabled(false);                             //bottoni disattivati
-        suonaGen01.setEnabled(false);
-
-        copyFilesToInternalStorage();                                   //avvia procedura copia
+        //startCsoundAgain.setEnabled(false);                             //bottoni disattivati
+        //suonaGen01.setEnabled(false);
 
         startCsoundAgain.setEnabled(true);                              //completata la procedura di copia viene attivato il bottone start csound
         suonaGen01.setEnabled(false);
+        suonaGen01_b.setEnabled(false);
+        suonaGen01_c.setEnabled(false);
+        suonaGen01_d.setEnabled(false);
 
 
 
@@ -224,6 +167,9 @@ public class Example3 extends BaseCsoundActivity  {
 
                 startCsoundAgain.setEnabled(false);
                 suonaGen01.setEnabled(true);
+                suonaGen01_b.setEnabled(true);
+                suonaGen01_c.setEnabled(true);
+                suonaGen01_d.setEnabled(true);
             }
         });
 
@@ -231,8 +177,39 @@ public class Example3 extends BaseCsoundActivity  {
             @Override
             public void onClick(View v) {
 
-                String event = "i1 0 .7";                     //prepare event for .csd score
-                csoundObj.sendScore(event);                                  //sends event to .csd score
+                String event1 = "i1 0 .7 2";                     //prepare event for .csd score
+                csoundObj.sendScore(event1);                     //sends event to .csd score
+
+            }
+        });
+
+
+        suonaGen01_b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String event2 = "i1 0 .7 3";                     //prepare event for .csd score
+                csoundObj.sendScore(event2);                     //sends event to .csd score
+
+            }
+        });
+
+        suonaGen01_c.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String event1 = "i1 0 .7 4";                     //prepare event for .csd score
+                csoundObj.sendScore(event1);                     //sends event to .csd score
+
+            }
+        });
+
+        suonaGen01_d.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String event1 = "i1 0 .7 5";                     //prepare event for .csd score
+                csoundObj.sendScore(event1);                     //sends event to .csd score
 
             }
         });

@@ -16,7 +16,7 @@ public class Example1 extends BaseCsoundActivity {
     CsoundUI csoundUI = null;                               //states CsoundUI and close evenctually a precedent CsoundUI object and states a CsoundUI object
     private CsoundObj csoundObj;                            //state a CsoundObj
     Button CsoundStart, CsoundStop, PlayInstr, StopInstr ;  //state buttons
-    SeekBar volumeCsound;                                   //state slider
+    SeekBar volumeCsound, volumeCsoundWind;                 //state slider
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -31,6 +31,7 @@ public class Example1 extends BaseCsoundActivity {
         PlayInstr = (Button) findViewById(R.id.button4);    //  "       "       "       "
         StopInstr = (Button) findViewById(R.id.button5);    //  "       "       "       "
         volumeCsound = (SeekBar) findViewById(R.id.seekBar_volume);       //connect java seekbar to xml seekbar
+        volumeCsoundWind = (SeekBar) findViewById(R.id.seekBar_vol_wind); //    "            "            "
 
         CsoundStart.setEnabled(true); //button enabled at begin
         CsoundStop.setEnabled(false);
@@ -44,6 +45,7 @@ public class Example1 extends BaseCsoundActivity {
                 //write here your command for this button:
                 csoundObj.startCsound(createTempFile(getResourceFileAsString(R.raw.test_01)));   //start Csound csd file
                 csoundUI.addSlider(volumeCsound, "volume", 0, 1);          //connect java seekbar to csound chnget
+                csoundUI.addSlider(volumeCsoundWind, "volume2", 0, 1);          //connect java seekbar to csound chnget
                 CsoundStart.setEnabled(false);
                 CsoundStop.setEnabled(true);
                 PlayInstr.setEnabled(true);
