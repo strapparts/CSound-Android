@@ -23,6 +23,6 @@ As he explains Brian Redfern: "That's a basic problem with bluetooth audio used 
 
 We invite anyone to improve the examples of this project or to add other activityes to introduce other possibilityes of application of Csound on Android.
 
-thank you to Guillermo Senna, for help to use of updateValuesFromCsound() and naturally Steven Ji, that he dedicated himself specifically to the connection system beetwen Csound and Android.
+thank you to Guillermo Senna, for help to use of updateValuesFromCsound() and naturally thanks to Steven Ji, that he dedicated himself specifically to the connection system beetwen Csound and Android, and to all Csounders that contribute to improvement to Cosund.
 
 2017 August, Antonio Lanciotti and Andrea Strappa
