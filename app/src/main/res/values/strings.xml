@@ -4,8 +4,8 @@
     <string name="hello_csound">Hello Csound!</string>
     <string name="start_csound">Start Csound</string>
     <string name="stop_csound">Stop Csound</string>
-    <string name="play_instrument">PLAY INSTRUMENT (-p3)</string>
-    <string name="stop_instrument">STOP INSTRUMENT (+p3)</string>
+    <string name="play_instrument">Start Instrument (-p3)</string>
+    <string name="stop_instrument">Stop Instrument (+p3)</string>
     <string name="buttonFromCsound">updateValuesFromCsound</string>
     <string name="textviewHz">TextViewHz</string>
     <string name="quarter_a4">quarter_a4</string>

@@ -1,11 +1,9 @@
 package com.strapparts.csound_android;
 
 import android.content.DialogInterface;
-import android.content.res.AssetManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -13,10 +11,6 @@ import com.csounds.CsoundObj;
 import com.csounds.bindings.ui.CsoundUI;
 
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 
 public class Example4 extends AppCompatActivity {
 
@@ -73,7 +67,7 @@ public class Example4 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                csoundObj.startCsound(new File(getFilesDir() + getString(R.string.relative_path) + "read_midi_file.csd"));  //inserito percorso memoria interna per il file csd
+                csoundObj.startCsound(new File(getFilesDir() + getString(R.string.relative_path) + "test_04.csd"));  //inserito percorso memoria interna per il file csd
 
             }
         });

@@ -32,6 +32,7 @@ public class Example1 extends BaseCsoundActivity {
         StopInstr = (Button) findViewById(R.id.button5);    //  "       "       "       "
         volumeCsound = (SeekBar) findViewById(R.id.seekBar_volume);       //connect java seekbar to xml seekbar
         volumeCsoundWind = (SeekBar) findViewById(R.id.seekBar_vol_wind); //    "            "            "
+        //TO SET SEEKBAR TO INITIAL VALUE DIFFERENTE TO '0', set value of 'progress' parameter in xml file with percent value
 
         CsoundStart.setEnabled(true); //button enabled at begin
         CsoundStop.setEnabled(false);

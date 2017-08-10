@@ -1,10 +1,7 @@
 package com.strapparts.csound_android;
 
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.AssetManager;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -56,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     //procedura di copia di tutti gli asset nella directory interna
                     AssetManager assetManager = this.getAssets();            //inizializzazione asset manager
-                    String[] assets = {"a4_pianoforte.wav", "c5_pianoforte.wav", "f4_pianoforte.wav", "g4_pianoforte.wav", "test_03.csd", "do_la_re.mid", "marmstk1.wav", "read_midi_file.csd"};  //definizione array che contiene i nomi dei file da copiare
+                    String[] assets = {"a4_pianoforte.wav", "c5_pianoforte.wav", "f4_pianoforte.wav", "g4_pianoforte.wav", "test_03.csd", "do_la_re.mid", "marmstk1.wav", "test_04.csd"};  //definizione array che contiene i nomi dei file da copiare
                     InputStream in;                              //definizioni input e output stream per la copia dei file
                     OutputStream out;
 
