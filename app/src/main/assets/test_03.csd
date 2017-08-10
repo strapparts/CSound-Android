@@ -1,7 +1,6 @@
 <CsoundSynthesizer>
 <CsOptions>
-;-odac -B512 -b128 -dm0 -+msg_color=0 ;buffer troppo basso!!
--odac -B1024 -b128 -dm0 -+msg_color=0 ;buffer troppo basso!!
+-odac -dm0 -+msg_color=0 ;buffer troppo basso!!
 </CsOptions>
 <CsInstruments>
 

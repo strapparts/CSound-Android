@@ -1,6 +1,6 @@
 <CsoundSynthesizer>
 <CsOptions>
--odac -B2048 -b512 -dm0 -+msg_color=0
+-odac -dm0 -+msg_color=0
 ;-odac -M0 -B2800 -b400 -+raw_controller_mode=1
 ;-o dac -d -B2048 -b512
 </CsOptions>
