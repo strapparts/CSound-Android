@@ -21,7 +21,7 @@ If you wont use opcodes that read external files from Csound, like .wav or .sf2 
 - bluetooth.
 As he explains Brian Redfern: "That's a basic problem with bluetooth audio used for interactive music apps, for audio players and youtube its fine, they use huge buffers so you don't notice the latency. For interactive music you need to go with the 8th inch audio output or a class compliant usb device for good audio quality on android".
 
-We invite anyone to improve the examples of this project or to add other activityes to introduce other possibility of application of Csound on Android.
+We invite anyone to improve the examples of this project or to add other activityes to introduce other possibilityes of application of Csound on Android.
 
 thank you to Guillermo Senna, for help to use of updateValuesFromCsound() and naturally Steven Ji, that he dedicated himself specifically to the connection system beetwen Csound and Android.
 
