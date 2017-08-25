@@ -40,7 +40,7 @@ public class Example2 extends BaseCsoundActivity implements
         UpdateValueWithSwitch = (Button) findViewById(R.id.button);     //connect java button a xml button widget
         UpdateValueWithPush = (Button) findViewById(R.id.button13);     //connect java button a xml button widget
         volumeSlider = (SeekBar) findViewById(R.id.seekBar);     //connect java seekbar to xml seekbar widget
-        //TO SET SEEKBAR TO INITIAL VALUE DIFFERENTE TO '0', set value of 'progress' parameter in xml file with percent value 
+        //TO SET SEEKBAR TO INITIAL VALUE DIFFERENTE TO '0', set value of 'progress' parameter in xml file with percent value
 
         clefImage1 = (ImageView) findViewById(R.id.imageView2); //connect un widget xml a un oggetto java
         clefImage1.setImageResource(R.drawable.ch_40x80); //show clef image

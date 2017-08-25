@@ -1,6 +1,6 @@
 <CsoundSynthesizer>
 <CsOptions>
--odac -dm0 -+msg_color=0 -Fdo_la_re.mid
+-odac -dm0 -+msg_color=0 -Fdo_la_re.mid -T
 </CsOptions>
 <CsInstruments>
 
@@ -9,114 +9,37 @@ ksmps = 16
 nchnls = 1
 0dbfs  = 1
 
-;massign 2, 5
+gisf	sfload	"flauto_dritto.sf2" ;E-mu_CreativeLab soundfont
+	    sfplist	gisf
+	    sfpassign 10, gisf
 
-instr 1 ;electric piano
-;midiprogramchange 74
+instr 1
 iGain = .4
 iAmp veloc
 iAmp = iAmp/127 ;convert velocity to 0dbfs
 iNum notnum
 iCps = cpsmidinn(iNum) ;notenum -> cps conversion
-;or:
-;iCps  = (440.0*exp(log(2.0)*((iNum)-69.0)/12.0)) ;notenum -> cps conversion
 kEnv	madsr	.05, .1, iAmp, .2
-
-kv1	madsr	.05, .1, 200, .2			;(FM) Modulator Index One
-kv5	=	50					;ADSR 2 and 4 target
-;asig   STKRhodey ifrq, iamp,     [kmod, kv1[, kcross, kv2[, klfo, kv3[, klfodepth, kv4[, kadsr, kv5]]]]]
-;aSig	STKRhodey iCps, iAmp, 2,   kv1,  4,      10,   11,   100,  1,         3,    128,    kv5
-aSig poscil iAmp, iCps, 1 ;sostituisce riga precedente!!!!!!!!!!!!!!!
-
-aSig	= aSig * kEnv * iGain
-out aSig
+kc1 = .5
+kc2 = .5
+kvrate = 6
+kvdpth = .1 ;line 0, p3, p6
+asig fmb3 kEnv, iCps, kc1, kc2, kvdpth, kvrate
+out asig * iGain
 endin
 
-instr 2 ;flute
-iVel veloc
-iAmp = iVel/127
-iGain = .4
-iNot notnum
-iCps = cpsmidinn(iNot)
-kEnv madsr .5, .2, .6, .1
-
-kv1	line	80, 3, 80	;jet delay
-kv4	line	0, 3, 80	;vibrato depth
-
-;asig	STKFlute ifrq, iamp,[kjet, kv1[, knoise, kv2[, klfo, kv3[, klfodepth, kv4[, kbreath, kv5]]]]]
-;aSig	STKFlute iCps, iAmp, 2,    kv1 ,   4,    100,   11,  100,    1,       kv4,  128,     90
-aSig poscil iAmp, iCps, 1 ;sostituisce riga precedente!!!!!!!!!!!!!!!!!!!
-
-
-aSig	= aSig * kEnv * iGain
-out aSig
+instr 2
+igain = .3
+inum	notnum
+iamp veloc
+iamp = iamp/127 ;convert velocity to 0dbfs
+kamp	linsegr	1, 1, 1, .1, 0
+kamp	= kamp/5000						;scale amplitude
+kfreq	init	1						;do not change freq from sf
+asig	sfplay3m iamp, inum, kamp*iamp, kfreq, 10		;preset index = 10
+	out	asig * igain
 endin
 
-instr 3 ;guitar
-iGain = .1
-iAmp veloc
-iAmp = iAmp/127 ;convert velocity to 0dbfs
-iNum notnum
-iCps = cpsmidinn(iNum) ;notenum -> cps conversion
-;or:
-;iCps  = (440.0*exp(log(2.0)*((iNum)-69.0)/12.0)) ;notenum -> cps conversion
-ifn  = 0
-imeth = 6
-kEnv	madsr	.05, .1, iAmp, .2
-;asig pluck kamp, kcps, icps, ifn, imeth [, iparm1] [, iparm2]
-aSig  pluck iAmp, iCps, iCps, ifn, imeth,    .1,      10
-aSig = aSig * kEnv * iGain
-out aSig
-endin
-
-instr 4 ;marimba - IT NEEDS TWO TABLES!!!!!!!!!
-iGain = .1
-iAmp veloc
-iAmp = iAmp/127 ;convert velocity to 0dbfs
-iNum notnum
-iCps = cpsmidinn(iNum) ;notenum -> cps conversion
-;or:
-;iCps  = (440.0*exp(log(2.0)*((iNum)-69.0)/12.0)) ;notenum -> cps conversion
-
-ihrd = 0.1 ;the hardness of the stick used in the strike. A range of 0 to 1 is used. 0.5 is a suitable value.
-iposit = 0.561 ;ipos = .01 ;where the block is hit, in the range 0 to 1.
-imp = 3 ;a table of the strike impulses. The file marmstk1.wav is a suitable function
-kvibf = 6.0 ;kvibf -- frequency of vibrato in Hertz. Suggested range is 0 to 12
-kvamp = 0.05 ;kvamp -- amplitude of the vibrato
-ivibfn = 4 ;ivfn -- shape of vibrato, usually a sine table, created by a function
-idec = .6 ;idec -- time before end of note when damping is introduced
-idoubles = .01 ;idoubles (optional) -- percentage of double strikes. Default is 40%.
-itriples = .01 ;itriples (optional) -- percentage of triple strikes. Default is 20%.
-
-;asig marimba kamp, kfrq, ihrd, ipos, imp, kvibf, kvamp, ivibfn, idec [, idoubles] [, itriples]
-aSig marimba iAmp, iCps, ihrd, iposit, imp, kvibf, kvamp, ivibfn, idec, idoubles, itriples
-aSig = aSig * iGain
-out aSig
-endin
-
-instr 5 ;vibes - IT NEEDS TWO TABLES!!!!!!!!!
-iGain = .1
-iAmp veloc
-iAmp = iAmp/127 ;convert velocity to 0dbfs
-iNum notnum
-iCps = cpsmidinn(iNum) ;notenum -> cps conversion
-;or:
-;iCps  = (440.0*exp(log(2.0)*((iNum)-69.0)/12.0)) ;notenum -> cps conversion
-kEnv	madsr	.05, .1, iAmp, .2
-; kamp = 20000
-  ; kfreq = 440
-  ; ihrd = 0.5
-  ; ipos = p4
-  ; imp = 1
-  ; kvibf = 6.0
-  ; kvamp = 0.05
-  ; ivibfn = 2
-  ; idec = 0.1
-;ares  vibes    kamp, kfreq, ihrd, ipos, imp, kvibf, kvamp, ivibfn, idec
-aSig	vibes	iAmp, iCps,  .5,   .561,  3,   6.0,   0.05,   4,     .1
-aSig = aSig * kEnv * iGain
-out aSig
-endin
 
 
 instr 10 ;metronome trigger
@@ -150,8 +73,8 @@ f2 0 16384 10 1 1 1 .8 .6 .4 .2 ;PROVVISORIO PER POSCIL al posto di ftk...
 f3 0 256 7 1 64 0 192 0 ;sostituita tabella precedente per verificare se il problema dipende dalla lettura del file .wav
 ; Table #2, a sine wave for the vibrato.
 f4 0 128 10 1 ;table for marimba, vibes, gogobel!!!!!!
-f0 36.5
-i10 0 34  ;metronome trigger. P3 DEVE ESSERE PIù CORTO DELLA DURATA DEL FILE MIDI, PER EVITARE PROBLEMI ALLA FINE!!!!!!!
-
+;f0 36.5
+i10 0 300  ;metronome trigger. P3 DEVE ESSERE PIù CORTO DELLA DURATA DEL FILE MIDI, PER EVITARE PROBLEMI ALLA FINE!!!!!!! col flag -T il problema dovrebbe sparire
+;col flag -T il running finisce con il midi file. se la durata dello strumento è maggiore, lo stop viene imposto dalla fine del file midi.
 </CsScore>
 </CsoundSynthesizer>
