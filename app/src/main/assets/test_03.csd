@@ -1,6 +1,6 @@
 <CsoundSynthesizer>
 <CsOptions>
--odac -dm0 -+msg_color=0
+-odac -dm0 -+msg_color=0 ;buffer troppo basso!!
 </CsOptions>
 <CsInstruments>
 
@@ -10,7 +10,7 @@ nchnls = 2
 0dbfs = 1.0
 
 instr 1 ;GEN01 instr
-ifn	    =  2   ; table number
+ifn	    =  p4   ; table number
 ilen	    =  nsamp(ifn)   ; return actual number of samples in table
 itrns	    =  1   ; no transposition
 ilps	    =  0   ; loop starts at index 0
@@ -27,7 +27,12 @@ endin
 </CsInstruments>
 <CsScore>
 f2 0 65536 1 "f4_pianoforte.wav" 0 0 2
+f3 0 65536 1 "g4_pianoforte.wav" 0 0 2
+f4 0 65536 1 "a4_pianoforte.wav" 0 0 2
+f5 0 65536 1 "c5_pianoforte.wav" 0 0 2
 f0 z
+;i1 0 .7 2
+;i1 + . 3
 </CsScore>
 </CsoundSynthesizer>
 

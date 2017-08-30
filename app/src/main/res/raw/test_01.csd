@@ -10,6 +10,7 @@ ksmps = 64
 nchnls = 1
 0dbfs = 1.0
 gkcf init 0
+
 instr 1
 ;kplay chnget "buttonPlay"
 ;kstop chnget "buttonStop"
@@ -31,13 +32,16 @@ note:
 asig oscili aatt, gkcf, 1, i1
 out asig*igain*kvol
 endin
+
 instr 2
 igain = .01
 kenv linseg 0, 1, igain, p3-2, igain, 1, 0
+kvol chnget "volume2"
+kvol portk kvol, .1, i(kvol)
 gkcf randomi 500, 900, .2
 anoise rand .05
 asig reson anoise, gkcf, 100
-out asig*kenv
+out asig*kenv*kvol
 endin
 </CsInstruments>
 <CsScore>

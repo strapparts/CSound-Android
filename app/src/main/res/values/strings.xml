@@ -4,8 +4,8 @@
     <string name="hello_csound">Hello Csound!</string>
     <string name="start_csound">Start Csound</string>
     <string name="stop_csound">Stop Csound</string>
-    <string name="play_instrument">PLAY INSTRUMENT (-p3)</string>
-    <string name="stop_instrument">STOP INSTRUMENT (+p3)</string>
+    <string name="play_instrument">Start Instrument (-p3)</string>
+    <string name="stop_instrument">Stop Instrument (+p3)</string>
     <string name="buttonFromCsound">updateValuesFromCsound</string>
     <string name="textviewHz">TextViewHz</string>
     <string name="quarter_a4">quarter_a4</string>
@@ -15,7 +15,7 @@
     <string name="change_frequency">push and lift</string>
     <string name="buttonGen01">ButtonGen01</string>
     <string name="buttongen01">buttonGen01</string>
-    <string name="buttonSuonaGen01">ButtonSuonaGen01</string>
+    <string name="buttonSuonaGen01">ButtonPlayGen01_a</string>
     <string name="confirmtoexit">Are you sure you want to exit?</string>
     <string name="startCsound2">StartCSound2</string>
     <string name="violin_clef">violin_clef</string>
@@ -24,5 +24,15 @@
     <string name="violin_clef2">violin_clef2</string>
     <string name="c5image">c5image</string>
     <string name="textviewhz">TextViewHz</string>
+    <string name="buttonMidiFile">ButtonMidiFile</string>
+    <string name="buttonPlayMidiFile">ButtonPlayMidiFile</string>
+    <string name="buttonMidiFile_b">ButtonMidiFile_b</string>
+    <string name="buttonMidiPlay_b">ButtonMidiPlay_b</string>
+    <string name="buttonMidiPause_b">ButtonMidiPause_b</string>
+    <string name="buttonCopyFiles">ButtonCopyFiles</string>
+    <string name="buttonPlayGen01_b">ButtonPlayGen01_b</string>
+    <string name="buttonPlayGe01_c">ButtonPlayGe01_c</string>
+    <string name="buttonPlayGe01_d">ButtonPlayGe01_d</string>
+    <string name="buttonplaygen01_a">buttonPlayGen01_a</string>
 
 </resources>
