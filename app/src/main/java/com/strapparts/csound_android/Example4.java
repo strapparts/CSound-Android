@@ -12,7 +12,7 @@ import com.csounds.bindings.ui.CsoundUI;
 
 import java.io.File;
 
-public class Example4 extends AppCompatActivity {
+public class Example4 extends BaseCsoundActivity {
 
     private CsoundObj csoundObj;                            //state a CsoundObj
     CsoundUI csoundUI = null;                               //states CsoundUI and close evenctually a precedent CsoundUI object and states a CsoundUI object
@@ -54,7 +54,7 @@ public class Example4 extends AppCompatActivity {
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_example4);
 

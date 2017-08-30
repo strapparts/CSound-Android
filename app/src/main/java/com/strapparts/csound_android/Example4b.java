@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class Example4b extends AppCompatActivity {
+public class Example4b extends BaseCsoundActivity {
 
     MediaPlayer mediaPlayer;
     Button buttonPlay, buttonPause;
@@ -36,7 +36,7 @@ public class Example4b extends AppCompatActivity {
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_example4b);
 

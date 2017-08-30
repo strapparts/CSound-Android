@@ -10,6 +10,7 @@ package com.strapparts.csound_android;
         import android.annotation.SuppressLint;
         import android.app.Activity;
         import android.content.Context;
+        import android.content.pm.ActivityInfo;
         import android.media.AudioManager;
         import android.os.Bundle;
         import android.os.Handler;
@@ -30,6 +31,12 @@ package com.strapparts.csound_android;
         super.onCreate(savedInstanceState);
 		/* Log.d("CsoundObj", "FRAMES:" + ((AudioManager) getSystemService(Context.AUDIO_SERVICE)).
 				getProperty(AudioManager.PROPERTY_OUTPUT_FRAMES_PER_BUFFER));*/
+
+        //MODIFICA DEL FILE INIZIA QUI
+		//ORIENTAMENTO VERTICALE BLOCCATO
+        //da: http://stackoverflow.com/questions/1512045/how-do-i-disable-orientation-change-on-android
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        //FINE MODIFICA
     }
 
     @Override

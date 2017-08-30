@@ -98,4 +98,9 @@ public class Example1 extends BaseCsoundActivity {
         });
 
     }
+
+    public void onBackPressed() {
+                        Example1.this.finish();
+                        csoundObj.stop(); //in caso di uscita Csound viene fermato
+    }
 }

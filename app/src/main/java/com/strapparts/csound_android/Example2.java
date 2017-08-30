@@ -212,6 +212,11 @@ public class Example2 extends BaseCsoundActivity implements
 
     }
 
+    public void onBackPressed() {
+        Example2.this.finish();
+        csoundObj.stop(); //in caso di uscita Csound viene fermato
+    }
+
     public void csoundObjStarted(CsoundObj csoundObj) {}            //needs "implements CsoundObjListener"
 
 

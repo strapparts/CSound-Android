@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseCsoundActivity {
 
     Button buttonCopyFiles, buttonToPageOne, buttonToPageTwo, buttonToPageThree, buttonToPageFour, buttonToPageFour_b; //declare buttons
 
@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);     //connect to layout window ("activity_main.xml")
 
