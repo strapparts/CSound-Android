@@ -54,14 +54,9 @@ public class Example2 extends BaseCsoundActivity implements
         noteImage2.setImageResource(R.drawable.c5_40x80);
         testValue2 = (TextView) findViewById(R.id.textView3);
 
-        CsoundUI ui = new CsoundUI(csoundObj);
 
-
-
-
-
-        ui.addButton(UpdateValueWithSwitch, "button-channel-1", 0); //col valore '0': il bottone emette un solo '1' nell'istante in cui viene premuto.
-        ui.addButton(UpdateValueWithPush, "button-channel-2", 1);  //col valore '1': il bottone emette un flusso di '1' fintanto che il bottone viene premuto.
+        csoundUI.addButton(UpdateValueWithSwitch, "button-channel-1", 0); //col valore '0': il bottone emette un solo '1' nell'istante in cui viene premuto.
+        csoundUI.addButton(UpdateValueWithPush, "button-channel-2", 1);  //col valore '1': il bottone emette un flusso di '1' fintanto che il bottone viene premuto.
         //"button-channel-1" is a name of channels in .csd file
 
 
@@ -196,7 +191,7 @@ public class Example2 extends BaseCsoundActivity implements
                 //CsoundUI csoundUI = new CsoundUI(csoundObj);
                 //csoundObj.startCsound((createTempFile(getResourceFileAsString(R.raw.test_04))));   //runs .csd file
 
-                csoundObj.startCsound((createTempFile(getResourceFileAsString(R.raw.test_02))));   //start Csound csd file
+                csoundObj.startCsound(createTempFile(getResourceFileAsString(R.raw.test_02)));   //start Csound csd file
                 csoundUI.addSlider(volumeSlider, "volume", 0, 1);          //connect java seekbar to csound chnget (default value set in widget, percent value on 'progress')
                 //"volume" is a name of channels in .csd file
 

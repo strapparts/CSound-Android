@@ -73,7 +73,7 @@ public class Example1 extends BaseCsoundActivity {
             public void onClick(View v) {
 
                 //write here your command for this button:
-                String event = String.format("i1 0 -1");                     //state event for .csd score
+                String event = "i1 0 -1";                     //state event for .csd score
                 csoundObj.sendScore(event);                                 //send event to .csd score
                 CsoundStart.setEnabled(false);
                 CsoundStop.setEnabled(true);
@@ -88,7 +88,7 @@ public class Example1 extends BaseCsoundActivity {
             public void onClick(View v) {
 
                 //write here your command for this button:
-                String event = String.format("i1 0 1");                     //state event for .csd score
+                String event = "i1 0 1";                     //state event for .csd score
                 csoundObj.sendScore(event);                                 //send event to .csd score
                 CsoundStart.setEnabled(false);
                 CsoundStop.setEnabled(true);
