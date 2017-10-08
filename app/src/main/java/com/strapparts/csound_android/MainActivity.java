@@ -107,6 +107,7 @@ public class MainActivity extends BaseCsoundActivity {
         buttonToPageThree.setEnabled(false);
         buttonToPageFour.setEnabled(false);
         buttonToPageFour_b.setEnabled(false);
+        buttonExamplesSynth.setEnabled(false);
 
 
 
@@ -122,6 +123,7 @@ public class MainActivity extends BaseCsoundActivity {
                 buttonToPageThree.setEnabled(true);
                 buttonToPageFour.setEnabled(true);
                 buttonToPageFour_b.setEnabled(true);
+                buttonExamplesSynth.setEnabled(true);
 
             }
         });
