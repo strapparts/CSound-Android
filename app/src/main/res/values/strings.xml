@@ -35,7 +35,6 @@
     <string name="buttonPlayGe01_d">ButtonPlayGe01_d</string>
     <string name="buttonplaygen01_a">buttonPlayGen01_a</string>
     <string name="esempisuonisynth">EsempiSuoniSynth</string>
-    <string name="buttonplay5">ButtonPlay5</string>
-    <string name="buttonstop5">ButtonStop5</string>
+    <string name="buttonPlayStop">ButtonPlayStop</string>
 
 </resources>

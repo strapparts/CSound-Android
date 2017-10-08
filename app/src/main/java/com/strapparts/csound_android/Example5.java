@@ -17,10 +17,7 @@ public class Example5 extends BaseCsoundActivity implements CsoundObjListener {
     private CsoundObj csoundObj;                                //states csound
 
     SeekBar volumeCsound;                 //state slider
-    Button buttonStart, buttonStop;
-
-
-
+    Button buttonStart;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -29,7 +26,6 @@ public class Example5 extends BaseCsoundActivity implements CsoundObjListener {
 
         volumeCsound = (SeekBar) findViewById(R.id.seekBar2);
         buttonStart = (Button) findViewById(R.id.button23);
-        buttonStop = (Button) findViewById(R.id.button24);
 
         csoundObj = new CsoundObj();                                    //create csound object
         csoundUI = new CsoundUI(csoundObj);                             //create binding object
@@ -51,25 +47,6 @@ public class Example5 extends BaseCsoundActivity implements CsoundObjListener {
                 return false;
             }
         });
-
-/*
-        buttonStart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String event = String.format("i 10 0 -1 72 1");                     //state event for .csd score
-
-                csoundObj.sendScore(event);                                 //send event to .csd score
-            }
-        });
-
-        buttonStop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String event = String.format("i 90 0 .01 10 .1");                     //state event for .csd score
-                csoundObj.sendScore(event);                                 //send event to .csd score
-            }
-        });
-*/
 
 
     }
