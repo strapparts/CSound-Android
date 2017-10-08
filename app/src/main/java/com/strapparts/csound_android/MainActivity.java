@@ -16,11 +16,7 @@ import java.io.OutputStream;
 
 public class MainActivity extends BaseCsoundActivity {
 
-    Button buttonCopyFiles, buttonToPageOne, buttonToPageTwo, buttonToPageThree, buttonToPageFour, buttonToPageFour_b; //declare buttons
-
-
-
-
+    Button buttonCopyFiles, buttonToPageOne, buttonToPageTwo, buttonToPageThree, buttonToPageFour, buttonToPageFour_b, buttonExamplesSynth; //declare buttons
 
 
 
@@ -53,7 +49,7 @@ public class MainActivity extends BaseCsoundActivity {
                 } else {
                     //procedura di copia di tutti gli asset nella directory interna
                     AssetManager assetManager = this.getAssets();            //inizializzazione asset manager
-                    String[] assets = {"a4_pianoforte.wav", "c5_pianoforte.wav", "f4_pianoforte.wav", "g4_pianoforte.wav", "test_03.csd", "do_la_re.mid", "marmstk1.wav", "test_04.csd", "flauto_dritto.sf2"};  //definizione array che contiene i nomi dei file da copiare
+                    String[] assets = {"a4_pianoforte.wav", "c5_pianoforte.wav", "f4_pianoforte.wav", "g4_pianoforte.wav", "test_03.csd", "do_la_re.mid", "marmstk1.wav", "test_04.csd", "libfluidOpcodes.so", "flauto_dritto.sf2", "synth_sounds_07.csd"};  //definizione array che contiene i nomi dei file da copiare
                     InputStream in;                              //definizioni input e output stream per la copia dei file
                     OutputStream out;
 
@@ -103,6 +99,7 @@ public class MainActivity extends BaseCsoundActivity {
         buttonToPageThree = (Button) findViewById(R.id.button9);   //connect java button to xml button image widget
         buttonToPageFour = (Button) findViewById(R.id.button11);   //connect java button to xml button image widget
         buttonToPageFour_b = (Button) findViewById(R.id.button15);   //connect java button to xml button image widget
+        buttonExamplesSynth = (Button) findViewById(R.id.button22);
 
         //buttonCopyFiles.setEnabled(true); it's not necessary, it's true by deafault
         buttonToPageOne.setEnabled(false);
@@ -166,6 +163,14 @@ public class MainActivity extends BaseCsoundActivity {
             @Override
             public void onClick(View v) {
                 Intent gotoplay1 = new Intent(getApplicationContext(), Example4b.class); //prepare and start the activity "Example4_b"
+                startActivity(gotoplay1);
+            }
+        });
+
+        buttonExamplesSynth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent gotoplay1 = new Intent(getApplicationContext(), Example5.class); //prepare and start the activity "Example5"
                 startActivity(gotoplay1);
             }
         });

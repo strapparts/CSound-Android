@@ -31,7 +31,8 @@
         <activity android:name=".Example2" />
         <activity android:name=".Example3" />
         <activity android:name=".Example4" />
-        <activity android:name=".Example4b"></activity>
+        <activity android:name=".Example4b" />
+        <activity android:name=".Example5"></activity>
     </application>
 
 </manifest>

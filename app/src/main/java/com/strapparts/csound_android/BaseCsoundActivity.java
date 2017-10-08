@@ -21,12 +21,13 @@ package com.strapparts.csound_android;
 
 @SuppressLint("NewApi") public class BaseCsoundActivity extends Activity {
 
-    protected CsoundObj csoundObj = new CsoundObj(false,true);
+    protected CsoundObj csoundObj;
     protected Handler handler = new Handler();
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        csoundObj = new CsoundObj(false,true);
         csoundObj.setMessageLoggingEnabled(true);
         super.onCreate(savedInstanceState);
 		/* Log.d("CsoundObj", "FRAMES:" + ((AudioManager) getSystemService(Context.AUDIO_SERVICE)).

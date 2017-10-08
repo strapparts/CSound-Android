@@ -1,6 +1,6 @@
 <CsoundSynthesizer>
 <CsOptions>
--odac -dm0 -+msg_color=0 -Fdo_la_re.mid -T
+-odac -dm0 -+msg_color=0 -Fdo_la_re.mid -T --opcode-lib=libfluidOpcodes.so ;--opcode-lib=./libshare_libfluidOpcodes.so
 </CsOptions>
 <CsInstruments>
 
