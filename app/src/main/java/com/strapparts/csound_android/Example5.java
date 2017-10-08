@@ -37,22 +37,22 @@ public class Example5 extends BaseCsoundActivity implements CsoundObjListener {
         csoundUI.addSlider(volumeCsound, "volume", 0, 1);          //connect java seekbar to csound chnget
 
 
-        /*
+
         buttonStart.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if(event.getAction() == MotionEvent.ACTION_DOWN) {
-                    String event1 = String.format("i 4 0 -1 72 1");                     //state event for .csd score
+                    String event1 = String.format("i 10 0 -1 72 1");                     //state event for .csd score
                     csoundObj.sendScore(event1);                                 //send event to .csd score
                 } else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    String event2 = String.format("i 90 0 .01 4 .05");                     //state event for .csd score
+                    String event2 = String.format("i 90 0 .01 10 .05");                     //state event for .csd score
                     csoundObj.sendScore(event2);                                 //send event to .csd score
                 }
                 return false;
             }
         });
-        */
 
+/*
         buttonStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,7 +69,7 @@ public class Example5 extends BaseCsoundActivity implements CsoundObjListener {
                 csoundObj.sendScore(event);                                 //send event to .csd score
             }
         });
-
+*/
 
 
     }
