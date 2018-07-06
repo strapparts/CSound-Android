@@ -51,10 +51,12 @@ public class CsoundSliderBinding extends AbstractBinding{
 		seekBar.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
 			
 			public void onStopTrackingTouch(SeekBar seekBar) {
+				// TODO Auto-generated method stub
 				
 			}
 			
 			public void onStartTrackingTouch(SeekBar seekBar) {
+				// TODO Auto-generated method stub
 				
 			}
 			
