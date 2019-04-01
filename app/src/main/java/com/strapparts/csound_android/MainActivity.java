@@ -53,7 +53,7 @@ public class MainActivity extends BaseCsoundActivity {
                 } else {
                     //procedura di copia di tutti gli asset nella directory interna
                     AssetManager assetManager = this.getAssets();            //inizializzazione asset manager
-                    String[] assets = {"a4_pianoforte.wav", "c5_pianoforte.wav", "f4_pianoforte.wav", "g4_pianoforte.wav", "test_03.csd", "do_la_re.mid", "marmstk1.wav", "test_04.csd", "flauto_dritto.sf2"};  //definizione array che contiene i nomi dei file da copiare
+                    String[] assets = assetManager.list("");
                     InputStream in;                              //definizioni input e output stream per la copia dei file
                     OutputStream out;
 

@@ -1,6 +1,6 @@
 <CsoundSynthesizer>
 <CsOptions>
--odac -dm0 -+msg_color=0 -Fdo_la_re.mid -T
+-odac -Fdo_la_re.mid -T
 </CsOptions>
 <CsInstruments>
 
@@ -9,9 +9,9 @@ ksmps = 16
 nchnls = 1
 0dbfs  = 1
 
-gisf	sfload	"flauto_dritto.sf2" ;E-mu_CreativeLab soundfont
-	    sfplist	gisf
-	    sfpassign 10, gisf
+gisf sfload "flauto_dritto.sf2" ;E-mu_CreativeLab soundfont
+     sfplist gisf
+     sfpassign 10, gisf
 
 instr 1
 iGain = .4
@@ -19,7 +19,7 @@ iAmp veloc
 iAmp = iAmp/127 ;convert velocity to 0dbfs
 iNum notnum
 iCps = cpsmidinn(iNum) ;notenum -> cps conversion
-kEnv	madsr	.05, .1, iAmp, .2
+kEnv madsr .05, .1, iAmp, .2
 kc1 = .5
 kc2 = .5
 kvrate = 6
@@ -30,14 +30,14 @@ endin
 
 instr 2
 igain = .3
-inum	notnum
+inum notnum
 iamp veloc
 iamp = iamp/127 ;convert velocity to 0dbfs
-kamp	linsegr	1, 1, 1, .1, 0
-kamp	= kamp/5000						;scale amplitude
-kfreq	init	1						;do not change freq from sf
-asig	sfplay3m iamp, inum, kamp*iamp, kfreq, 10		;preset index = 10
-	out	asig * igain
+kamp linsegr 1, 1, 1, .1, 0
+kamp = kamp/5000      ;scale amplitude
+kfreq init 1      ;do not change freq from sf
+asig sfplay3m iamp, inum, kamp*iamp, kfreq, 10  ;preset index = 10
+out asig * igain
 endin
 
 
@@ -78,3 +78,20 @@ i10 0 300  ;metronome trigger. P3 DEVE ESSERE PIù CORTO DELLA DURATA DEL FILE M
 ;col flag -T il running finisce con il midi file. se la durata dello strumento è maggiore, lo stop viene imposto dalla fine del file midi.
 </CsScore>
 </CsoundSynthesizer>
+<bsbPanel>
+ <label>Widgets</label>
+ <objectName/>
+ <x>100</x>
+ <y>137</y>
+ <width>320</width>
+ <height>240</height>
+ <visible>true</visible>
+ <uuid/>
+ <bgcolor mode="nobackground">
+  <r>255</r>
+  <g>255</g>
+  <b>255</b>
+ </bgcolor>
+</bsbPanel>
+<bsbPresets>
+</bsbPresets>

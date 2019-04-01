@@ -14,9 +14,6 @@ import java.io.File;
 
 public class Example4 extends BaseCsoundActivity {
 
-    private CsoundObj csoundObj;                            //state a CsoundObj
-    CsoundUI csoundUI = null;                               //states CsoundUI and close evenctually a precedent CsoundUI object and states a CsoundUI object
-
     Button playMidi; //state button
 
 
@@ -58,11 +55,7 @@ public class Example4 extends BaseCsoundActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_example4);
 
-        csoundObj = new CsoundObj();                                    //create csound object
-        csoundUI = new CsoundUI(csoundObj);                             //create binding object
-
-
-        playMidi = (Button) findViewById(R.id.button14);
+        playMidi = findViewById(R.id.button14);
         playMidi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
